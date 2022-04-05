@@ -38,12 +38,13 @@ the commands in the loop.
 for books in books:
     """
     Looks for the H3 tag inside the "product_pod" container
-    books_title = books.find("h3") 
+     
     It took a while for me to solve this one here
     The title of the books are inside an <a> tag
     What I did is to search inside the <a> tag and treated the title
     attribute as a dictionary. 
     """
+    books_title = books.find("h3")
     book_title = books_title.find('a')["title"]
     print("Title: ",book_title)
     
