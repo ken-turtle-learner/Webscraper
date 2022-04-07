@@ -30,7 +30,6 @@ while page_number < 51:
     results = soup.find(id="default")
     books = results.find_all("article", class_="product_pod")
     
-    
     for books in books:
         
         find_title = books.find("h3")
