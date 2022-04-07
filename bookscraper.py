@@ -24,7 +24,7 @@ while(status_code != 404):  ## Do this until an error is returned (Status_Code 4
     print(f"page number {page_num} has status code {page.status_code}")
     status_code = page.status_code
 
-    if (status_code == 200):
+    if (status_code == 200):  # 200 means a valid page was returned
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.find(id="default")
         books = results.find_all("article", class_="product_pod")
