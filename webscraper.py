@@ -15,9 +15,12 @@ outfile = open("Library.csv", 'w', newline='')
 search = "ongoing"
 outfile = open("Library.csv", 'w', newline='')
 page_number = 1
+
 """
 This looops the function up until the last page
 """
+header = ["Book Title", "Price", "Availability", "Rating"]
+csv.writer(outfile).writerow(header)
 while page_number < 51:
     main_url = ("http://books.toscrape.com/catalogue/page-" 
             + str(page_number) + ".html" )
@@ -26,7 +29,10 @@ while page_number < 51:
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(id="default")
     books = results.find_all("article", class_="product_pod")
+    
+    
     for books in books:
+        
         find_title = books.find("h3")
         book_title = find_title.find('a')["title"]
         print("Title: ", book_title)
@@ -39,22 +45,29 @@ while page_number < 51:
             print("In stock: Yes")
         else:
             print("In stock: No")
+           
         find_rating = books.find("p")["class"]
-        book_rating = " ".join(find_rating)
-        print("Rating:", book_rating.capitalize())
+        book_rating = "".join(find_rating[1])
+        
+        print("Rating:", book_rating.capitalize(), "out of five stars")
         """
         This adds the data into the list data_item
         """
+       
         data_item = []
         data_item.append(book_title)
         data_item.append(book_price.text)
-        data_item.append(availability)
-        data_item.append(find_rating)
+        if availability == True:
+            data_item.append("In Stock")
+        elif availability == False: 
+            data_item.append("Out of Stock")
+        data_item.append(book_rating + " out of five stars")
         csv.writer(outfile).writerow(data_item)
     """
-    This adds 1 to the page number to indicate which page to go to next
+   # This adds 1 to the page number to indicate which page to go to next
     """
     page_number = page_number + 1
+  
 
 outfile.close()
 
