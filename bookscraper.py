@@ -37,8 +37,6 @@ while(status_code != 404):  ## Do this until an error is returned (Status_Code 4
             if not(book_link in link_queue):
                 link_queue.append(book_link)
 
-    status_code = 404
-
 ## Second, go through each link in the list to populate the book_data dictionary
 
 count = 1
