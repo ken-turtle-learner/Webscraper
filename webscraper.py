@@ -29,8 +29,6 @@ while page_number < 51:
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(id="default")
     books = results.find_all("article", class_="product_pod")
-    availability = results.find_all("p", class_="instock availability")
-
     for books in books:
 
         find_title = books.find("h3")
