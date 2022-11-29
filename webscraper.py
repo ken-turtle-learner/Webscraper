@@ -10,8 +10,6 @@ from bs4 import BeautifulSoup     #Imports the beautiful soup library
 
 # assigns the link of the webpage to a variable
 
-outfile = open("Library.csv", 'w', newline='')
-
 search = "ongoing"
 outfile = open("Library.csv", 'w', newline='')
 page_number = 1
