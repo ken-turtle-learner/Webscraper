@@ -10,15 +10,15 @@ from bs4 import BeautifulSoup     #Imports the beautiful soup library
 
 # assigns the link of the webpage to a variable
 
-search = "ongoing"
+#search = "ongoing"
 outfile = open("Library.csv", 'w', newline='')
 page_number = 1
+header = ["Book Title", "Price", "Availability", "Rating"]
+csv.writer(outfile).writerow(header)
 
 """
 This looops the function up until the last page
 """
-header = ["Book Title", "Price", "Availability", "Rating"]
-csv.writer(outfile).writerow(header)
 while page_number < 51:
     main_url = ("http://books.toscrape.com/catalogue/page-"
                 + str(page_number) + ".html")
